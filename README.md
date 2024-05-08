@@ -6,7 +6,7 @@ The research presented in this paper improves the classification accuracy of sub
 ![Fig2](https://github.com/HSarwat/Few-Shot-Proto-TL/assets/58105330/5fa9f65d-fbda-4cf8-b80b-bcb9cff2f637)
 The extracted feature vector FN is fed into a fully connected neural network to generate embedding features. These features map each class prototype (G1, G2,... G7), obtained from the mean of the support set (s), to a position in the embedding space. The class for each new sample (Q) is chosen by using a distance function to identify the closest class prototype. The extracted feacture vector used for this study is available in "processing/Data/data.pkl", and the code can be run after modifying the used paths to the installed ones.
 
-![Fig3](https://github.com/HSarwat/Few-Shot-Proto-TL/assets/58105330/7c427d51-bace-4afa-8a6e-5c878b769168)
+<img src="[https://github.com/favicon.ico](https://github.com/HSarwat/Few-Shot-Proto-TL/assets/58105330/7c427d51-bace-4afa-8a6e-5c878b769168)" width="200">
 Our proposed methodology (one-shot PN with 0.88s window size) was significantly more accurate than all other benchmark models (p < 0.05).
 
 ![Fig10](https://github.com/HSarwat/Few-Shot-Proto-TL/assets/58105330/d89925c8-c70a-426f-be1e-0fc54ff38b07)
