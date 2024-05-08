@@ -31,7 +31,7 @@ def proto_train(params):
 
 
         '''Create model'''
-        proto = Protonet.default_encoder(input=params["fn"], output=params["op"]).to('cuda:0')
+        proto = Protonet.default_encoder1(input=params["fn"], output=params["op"]).to('cuda:0')
 
 
         '''Assign test and train subject'''
