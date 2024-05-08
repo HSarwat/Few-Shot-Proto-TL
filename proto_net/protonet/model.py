@@ -76,7 +76,7 @@ class Protonet(nn.Module):
 
 
     @classmethod
-    def default_encoder1(cls, input, output):
+    def default_encoder(cls, input, output):
         encoder = nn.Sequential(
             nn.Linear(in_features=input, out_features=256),
             nn.ReLU(),
@@ -92,63 +92,7 @@ class Protonet(nn.Module):
         )
 
         return cls(encoder)
-
-    @classmethod
-    def default_encoder2(cls, input, output, ld, l1, l2, l3):
-        if ld == 1:
-            encoder = nn.Sequential(
-                nn.Linear(in_features=input, out_features=l1),
-                nn.ReLU(),
-                nn.BatchNorm1d(l1),
-                nn.Dropout(),
-
-                nn.Linear(l1, output),
-            )
-        elif ld == 2:
-            encoder = nn.Sequential(
-                nn.Linear(in_features=input, out_features=l1),
-                nn.ReLU(),
-                nn.BatchNorm1d(l1),
-                nn.Dropout(),
-
-                nn.Linear(l1, l2),
-                nn.ReLU(),
-                nn.BatchNorm1d(l2),
-                nn.Dropout(),
-
-                nn.Linear(l2, output)
-            )
-        elif ld == 3:
-            encoder = nn.Sequential(
-                nn.Linear(in_features=input, out_features=l1),
-                nn.ReLU(),
-                nn.BatchNorm1d(l1),
-                nn.Dropout(),
-
-                nn.Linear(l1, l2),
-                nn.ReLU(),
-                nn.BatchNorm1d(l2),
-                nn.Dropout(),
-
-                nn.Linear(l2, l3),
-                nn.ReLU(),
-                nn.BatchNorm1d(l3),
-                nn.Dropout(),
-
-                nn.Linear(l3, l3),
-                nn.ReLU(),
-                nn.BatchNorm1d(l3),
-                nn.Dropout(),
-                #
-                # nn.Linear(l3, l3),
-                # nn.ReLU(),
-                # nn.BatchNorm1d(l3),
-                # nn.Dropout(),
-
-                nn.Linear(l3, output)
-            )
-
-        return cls(encoder)
+        
 
     def sample_validation(self, sample):
 
