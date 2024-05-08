@@ -76,7 +76,7 @@ class Protonet(nn.Module):
 
 
     @classmethod
-    def default_encoder(cls, input, output):
+    def default_encoder1(cls, input, output):
         encoder = nn.Sequential(
             nn.Linear(in_features=input, out_features=256),
             nn.ReLU(),
