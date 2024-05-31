@@ -1,4 +1,4 @@
-from processing.constants import ALL_ACTION_LIST, device
+from processing.constants import ALL_ACTION_LIST, device, root_dir
 import numpy as np
 import torch
 from joblib import load
@@ -7,7 +7,7 @@ from joblib import load
 This function takes the input data, which is a nested dictionary and turns it into a list.
 '''
 def subs_to_list(data, subs, trials, ft):
-    sc = load(f'D:\Few-Shot Proto TL\processing\Data\scaler.bin')
+    sc = load(f'{root_dir}\Data\scaler.bin')
 
     if not isinstance(subs, list):
         subs = [subs]

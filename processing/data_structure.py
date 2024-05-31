@@ -3,7 +3,6 @@ import os
 from matplotlib.pyplot import axis
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from processing.constants import *
-from processing.functions import *
 from os.path import join as pjoin
 import numpy as np
 import pickle
@@ -21,17 +20,12 @@ import itertools
 '''This file reads the input pickle file'''
 # If you have your own data, you can replace this function with your own
 class data_structure():
-    def __init__(self, pickle_name="data.pkl", ask_force_reset=False) -> None:
-        if ask_force_reset:
-            force_reset = input("Do you want to regenerate the dictionary pickle?(y/n):") == "y"
-        else:
-            force_reset = False
+    def __init__(self, pickle_name="data.pkl") -> None:
         self.data_dict = {}
         self.pickle_name = pjoin(PICKLES_PATH, pickle_name)
         self.tensor_list = ["FMG", "IMU", "EMG"]
-        if os.path.isfile(self.pickle_name) and not force_reset:
+        if os.path.isfile(self.pickle_name):
             self.data_dict = pickle.load(open(self.pickle_name, "rb"))
-
         else:
             print("No data structure pickle")
 
@@ -85,12 +79,12 @@ class data_structure():
 
     # This is the dimensionality reduction function
     def dimensionality_reduction(self, fn):
-        X_train, y_train = self.dictionary_to_list([8], ALL_ACTION_LIST)
+        X_train, y_train = self.dictionary_to_list([9], ALL_ACTION_LIST)
 
         train_y = np.ravel(y_train)
         train_X = sensor_selection(X_train, "IFE")
 
-        scaler = load(f'D:\Few-Shot Proto TL\processing\Data\scaler.bin')
+        scaler = load(f'{root_dir}\Data\scaler.bin')
         train_X = scaler.transform(train_X)
 
         features = SelectKBest(f_classif, k=fn).fit(train_X, train_y)
