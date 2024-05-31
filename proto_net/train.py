@@ -22,7 +22,7 @@ def proto_train(params):
     max_subs = len(subs)
 
     '''Load Data'''
-    data = data_structure(pickle_name=f"D:\Few-Shot Proto TL\processing\Data\data.pkl", ask_force_reset=False)
+    data = data_structure(pickle_name=f"D:\Few-Shot Proto TL\processing\Data\data.pkl")
 
     '''Create a Fold Split'''
     kf = KFold(max_subs, shuffle=False)
@@ -49,7 +49,7 @@ def proto_train(params):
         '''Assign train dataloader with seg, ft, and fn'''
         ds_train = ProtoNetDataSet(data=data,query_subs=train_subs, sup_subs=test_subs, trials=ALL_TRIAL_LIST,
                                 n_shots=params['shots'], ft=features)
-        dl_train = ProtoNetDataLoader(ds_train, batch_size=20,shuffle=False)
+        dl_train = ProtoNetDataLoader(ds_train, batch_size=params["bs"],shuffle=False)
 
         '''Train model'''
         config = {'lr':params["lr"]}
